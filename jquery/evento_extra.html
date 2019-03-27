@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+
+	<title>JQuery</title>
+
+	<style>
+		#div1 {
+			width: 80px;
+			height: 80px;
+			border: 1px solid black;
+		}
+		.emDestaque {
+			background-color: red;
+		}
+	</style>
+
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+	<script>
+		$(document).ready(function() {
+			
+			$('#btn2').on('click', () => {
+				alert('BTN 2 CLICADO');
+			});
+			$('#btn1').on('click', () => {
+				$('#btn2').trigger('click');
+			});
+
+			$('#div1').hover(
+				e => $(e.target).toggleClass('emDestaque')
+			);
+
+			//escrita de forma diferente para o mesmo evento!
+			/*
+			$('#div1').hover(
+				e => $(e.target).addClass('emDestaque'),
+				e => $(e.target).removeClass('emDestaque')
+			);
+			*/
+
+			//escrita de forma diferente para o mesmo evento!
+			/*
+			$('#div1').on('mouseenter', e =>{
+				$(e.target).addClass('emDestaque');
+			});
+			$('#div1').on('mouseleave', e =>{
+				$(e.target).removeClass('emDestaque');
+			});
+			*/
+		});
+	</script>
+
+</head>
+
+<body>
+
+	<button id="btn1" type="button">BTN 1</button>
+	<button id="btn2" type="button">BTN 2</button>
+	<hr>
+
+	<div id="div1"></div>
+
+</body>
+
+
+</html>

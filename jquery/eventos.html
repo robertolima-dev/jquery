@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery</title>
+
+		<style>
+			#divExterna {
+				background-color: #ccc;
+				width: 80px;
+				height: 80px;
+			}
+			.inputFocado {
+				background-color: #ff0000;
+			}
+		</style>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+		
+		<script>
+			$(document).ready(function() {
+				$('#onload').html('Página carregada!');
+
+				$(window).scroll(() => {
+					$('#scroll').html('Scroll acionado!');
+				});
+
+				$(window).resize(() => {
+					$('#resize').html('Página redimensionada').css('background-color', 'red');
+				});
+
+				//function /arrow function
+				$('#div1').scroll(function() {
+					$(this).css('background-color', 'blue')
+				});
+
+				$('#btn1').mousedown(() => {
+					$('#div2').css('background-color', 'green');
+				});
+
+				$('#btn1').mouseup(() => {
+					$('#div2').css('background-color', 'blue');
+				});
+				$('#btn2').dblclick(() => {
+					$('#div2').css('background-color', 'yellow');
+				});
+				$('#div2').mousemove((e) => {
+					$('#resultadoDiv').html('X: ' + e.offsetX + ' / Y: ' + e.offsetY)
+				});
+				$('#divExterna').mouseenter(() => { //mouseover -> mesmo resultado, porem mais antigo
+					$('#resultadoDiv1').html('Entrou!!!');
+				});
+				$('#divExterna').mouseleave(() => { //mouseout -> mesmo resultado, porem mais antigo
+					$('#resultadoDiv1').html('Saiu!!!');
+				});
+				$('#teclado').keydown(() => {
+					$('#resultadoTecla').html('Tecla pressionada!');
+				});
+				$('#teclado').keyup(() => {
+					$('#resultadoTecla').html('Tecla liberada!');
+				});
+				$('#teclado').keyup((e) => {
+					if(e.keyCode == 13) {
+						let txt = $(e.target).val();
+						$('#resultadoTecla').html(txt);
+					}
+				});
+
+				$('#nome').focus((e) => {
+					console.log('Esse elemento HTML recebeu o foco (nome)')
+					$(e.target).addClass('inputFocado')
+				})
+
+				$('#email').focus((e) => {
+					console.log('Esse elemento HTML recebeu o foco (e-mail)')
+					$(e.target).addClass('inputFocado')
+				})
+
+				$('#nome').blur((e) => {
+					console.log('Esse elemento HTML perdeu o foco (nome)')
+					$(e.target).removeClass('inputFocado')
+				})
+
+				$('#email').blur((e) => {
+					console.log('Esse elemento HTML perdeu o foco (e-mail)')
+					$(e.target).removeClass('inputFocado')
+				})
+
+				$('#opcao').change((e) => {
+					console.log($(e.target).val())
+				})
+
+				$('form').submit((e) => {
+					e.preventDefault()
+					console.log('Formulário enviado')
+				})
+
+				$('a').click(e => {
+					e.preventDefault()
+				})
+			});
+			
+		</script>
+	</head>
+
+	<body>
+		
+		<div id="topo">
+			<h1>Eventos</h1>
+		</div>
+
+		<div>
+			<!-- **** BROWSE **** -->
+			<h3>Browser</h3>
+			<span>Onload: </span><span id="onload">?</span><br />
+			<span>Scroll: </span><span id="scroll">?</span><br />
+			<span>Resize window: </span><span id="resize">?</span>
+
+			<div id="div1" style="width: 100px; height: 100px; border: 1px solid gray; overflow-y: scroll;">
+				<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+			</div>
+			<hr />
+
+			<!-- **** MOUSE **** -->
+			<h3>Mouse</h3>
+			<button id="btn1" type="button">Clique aqui</button>
+			<button id="btn2" type="button">Clique aqui 2x</button>
+			<div id="div2" style="background-color: red; width: 80px; height: 50px; margin-top: 10px; margin-bottom: 10px"></div>
+			<span>Resultado do evento sobre a div </span><span id="resultadoDiv"></span>
+
+			<div id="divExterna"></div>
+			<span>Div Externa: </span><span id="resultadoDiv1"></span>
+			<hr />
+
+			<!-- **** TECLADO **** -->
+			<h3>Teclado</h3>
+			<span>Nome:</span>
+			<input type="text" id="teclado"/>
+			<span id="resultadoTecla">Resultado do evento sobre o input</span>
+			<hr />
+
+			<h3>Formulário</h3>
+			<form id="form">
+				<span>Nome:</span>
+				<input type="text" id="nome" />
+
+				<span>E-mail:</span>
+				<input type="text" id="email" />
+
+				<span>Motivo do contato:</span>
+				<select id="opcao">
+					<option value="">-- Selecione --</option>
+					<option value="duvida">Dúvida</option>
+					<option value="sugestao">Sugestão</option>
+				</select>
+				
+				<button type="submit">Enviar</button>
+			</form>
+
+			<br />
+			<a href="http://www.google.com.br">Google</a>
+		</div>
+	</body>
+
+</html>

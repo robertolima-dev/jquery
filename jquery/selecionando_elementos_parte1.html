@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<title>JQuery</title>
+
+		<script
+			src="https://code.jquery.com/jquery-3.3.1.min.js"
+			integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+			crossorigin="anonymous">
+		</script>
+	</head>
+
+	<body>
+
+		<h1>Selecionando elementos parte 1</h1>
+
+		<div>Div 1</div>
+		<div>Div 2</div>
+
+		<ul id="menu1">
+			<li class="listaMenu1">Menu 1 - item 1</li>
+			<li class="listaMenu1">Menu 1 - item 2</li>
+			<li class="listaMenu1">Menu 1 - item 3</li>
+		</ul>
+
+		<ul id="menu2">
+			<li class="listaMenu2">Menu 2 - item 1</li>
+			<li class="listaMenu2">Menu 2 - item 2</li>
+			<li class="listaMenu2">Menu 2 - item 3</li>
+		</ul>
+
+		<input type="text" placeholder="campo 1">
+
+		<select>
+			<option>-- Selecione uma opção --</option>
+			<option>opção 1</option>
+			<option>opção 2</option>
+		</select>
+
+		<br>
+
+		<img id="img-carro" src="carro.jpg">
+
+	</body>
+
+	<script>
+		
+		/*
+		console.log($('h1'));
+		console.log($('div'));
+		console.log($('ul'));
+		console.log($('li'));
+		console.log($('input'));
+		console.log($('select'));
+		console.log($('option'));
+		console.log($('img'));
+		*/
+
+		console.log($('.listaMenu1'));
+		console.log($('.listaMenu2'));
+
+		console.log($('#menu1'));
+		console.log($('#menu2'));
+		console.log($('#img-carro'));
+	</script>
+</html>
