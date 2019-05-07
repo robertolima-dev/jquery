@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery</title>
+
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+		<script>
+			$(document).ready(function() {
+				$('#onload').html('Página carregada!');
+
+				$(window).scroll(() => {
+					$('#scroll').html('Scroll acionado!');
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<p id="onload"></p>
+			<p id="scroll"></p>
+		</div>
+
+		<div style="height: 1000px;"></div>
+	</body>
+
+</html>
